@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Flex, Text } from "rebass";
 
-const WIDTH = "62px";
+const WIDTH = "3.2vw";
 
 const Dot = (props: { active?: boolean; size: string; duration?: string }) => {
   return (
@@ -45,7 +45,8 @@ const Paging = (props: { current: number; total: number }) => {
         color: "white",
         transform: "rotate(-90deg)",
         height: 80,
-        fontSize: 14
+        fontSize: 14,
+        fontWeight: "bold"
       }}>
       <Text>{props.current.toString().padStart(2, "0")}</Text>
       <Text sx={{ opacity: "0.5", mx: 3 }}>/</Text>
@@ -68,7 +69,7 @@ interface IndicatorsProps {
 export const Indicators = (props: IndicatorsProps) => {
   const {
     height = "80vh",
-    width = "62px",
+    width = "3.22vw",
     maxDisplayDots = 6,
     onSelect,
     duration = "350ms"

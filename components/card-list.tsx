@@ -7,13 +7,12 @@ const Control = (props: { onNext?: () => void; onPrev?: () => void }) => {
   const btnStyle = {
     justifyContent: "center",
     alignItems: "center",
-    width: 80,
-    height: 80,
-    borderRadius: 80,
+    width: "4vw",
+    height: "4vw",
+    borderRadius: "4vw",
     backgroundColor: "rgba(255, 255, 255, 0.3)",
     cursor: "pointer",
-    fontSize: "larger",
-    fontWeight: "bold"
+    fontSize: "larger"
   };
   return (
     <Flex sx={{ color: "white", fontSize: 32, gap: 18 }}>
@@ -218,6 +217,7 @@ export function CardList(props: CardListProps) {
           alignItems: "center",
           left: `calc((${width} / 2.5 + 40px) * ${-currentIdx})`,
           transition: "left 500ms"
+          // mt: "7vh"
         }}>
         {props.data.map((item, index) => {
           const isBig = index <= currentIdx;

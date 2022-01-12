@@ -2,8 +2,8 @@ declare module "react-gl-transition" {
   import React from "react";
 
   const GLTransition: React.FC<{
-    from: string;
-    to: string;
+    from: any;
+    to: any;
     progress: number;
     transition: any;
   }>;
