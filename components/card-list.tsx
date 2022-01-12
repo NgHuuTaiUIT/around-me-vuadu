@@ -1,4 +1,5 @@
 import React, { ReactElement, useEffect, useState } from "react";
+import { animated, useTransition } from "react-spring";
 import { Box, Flex, Image, Text } from "rebass";
 
 const Control = (props: { onNext?: () => void; onPrev?: () => void }) => {
@@ -46,6 +47,76 @@ const Paging = (props: { current: number; total: number }) => {
   );
 };
 
+const Card = ({ image, height }: { image: string; height?: string }) => {
+  const transitions = useTransition(image, {
+    key: image,
+    from: { transform: "rotateY(180deg)" },
+    enter: { transform: "rotateY(0deg)" },
+    leave: { transform: "rotateY(-180deg)" },
+    config: { tension: 220, friction: 120, duration: 1000 }
+    // exitBeforeEnter: true
+  });
+  return (
+    <Flex
+      sx={{
+        p: "10px",
+        borderRadius: "16px",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+        perspective: "1000px"
+      }}>
+      <Box
+        sx={{
+          // height: `470.763px`,
+          width: "100%",
+          flex: "0 0 auto",
+          transition: "transform 0.6s",
+          transformStyle: "preserve-3d",
+          position: "relative",
+          paddingTop: "100%"
+        }}>
+        {/* <Box
+          sx={{
+            position: "relative",
+            pt: "100%",
+            overflow: "hidden"
+          }}> */}
+        {transitions((style, item) => (
+          <animated.div
+            style={{
+              ...style,
+              position: "absolute",
+              paddingTop: "100%",
+              overflow: "hidden",
+              transition: "width 600ms",
+              backfaceVisibility: "hidden",
+              paddingRight: " 100%",
+              top: 0
+            }}>
+            <Image
+              src={item}
+              alt="demo"
+              sx={{
+                position: "absolute",
+                inset: 0,
+                padding: "0px",
+                border: "none",
+                margin: "auto",
+                display: "block",
+                objectFit: "cover",
+                objectPosition: "center",
+                width: ["100%", "100%"],
+                height: ["100%", "100%"],
+                borderRadius: "10px"
+              }}
+            />
+          </animated.div>
+        ))}
+        {/* </Box> */}
+      </Box>
+    </Flex>
+  );
+};
 interface CardListProps {
   data: {
     title: string;
@@ -102,17 +173,7 @@ export function CardList(props: CardListProps) {
                     }}></Box>
                 ))}
               </Flex>
-
-              <Image
-                src={item.image}
-                alt="demo"
-                sx={{
-                  width: ["100%", "100%"],
-                  height: ["100%", "100%"],
-                  objectFit: "cover",
-                  borderRadius: "9px",
-                }}
-              />
+              <Card image={item.image} />
             </Box>
           );
         })}
