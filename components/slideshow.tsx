@@ -114,7 +114,7 @@ export const SlideShow = (props: SlideShowProps) => {
       {progress > 0 && from !== null ? (
         <GLTransition
           from={<GLImage source={from} />}
-          to={<GLImage source={from} />}
+          to={<GLImage source={to} />}
           progress={progress}
           transition={newTransitions}
         />

@@ -8,23 +8,23 @@ export const data = [
     buttonColor: "#3F1D21",
     items: [
       {
-        title: "1",
-        rate: 4,
+        title: "Australia 1",
+        rate: 2,
         image: "https://source.unsplash.com/random/470x698?1"
       },
       {
-        title: "2",
-        rate: 4,
+        title: "Australia 2",
+        rate: 3,
         image: "https://source.unsplash.com/random/470x698?2"
       },
       {
-        title: "3",
+        title: "Australia 3",
         rate: 4,
         image: "https://source.unsplash.com/random/468x600?3"
       },
       {
-        title: "4",
-        rate: 4,
+        title: "Australia 4",
+        rate: 5,
         image: "https://source.unsplash.com/random/468x600?4"
       }
     ]
@@ -36,18 +36,18 @@ export const data = [
     buttonColor: "#2F704E",
     items: [
       {
-        title: "11",
-        rate: 4,
+        title: "Europe 1",
+        rate: 1,
         image: "https://source.unsplash.com/random/468x600?6"
       },
       {
-        title: "22",
-        rate: 4,
+        title: "Europe 2",
+        rate: 2,
         image: "https://source.unsplash.com/random/4480×5600?7"
       },
       {
-        title: "33",
-        rate: 4,
+        title: "Europe 3",
+        rate: 3,
         image: "https://source.unsplash.com/random/468x600?8"
       },
       {
@@ -64,17 +64,17 @@ export const data = [
     buttonColor: "#3F1D21",
     items: [
       {
-        title: "11",
+        title: "Africa 1",
         rate: 4,
         image: "https://source.unsplash.com/random/468x600?10"
       },
       {
-        title: "22",
+        title: "Africa 2",
         rate: 4,
         image: "https://source.unsplash.com/random/4480×5600?11"
       },
       {
-        title: "33",
+        title: "Africa 3",
         rate: 4,
         image: "https://source.unsplash.com/random/468x600?12"
       },
@@ -92,22 +92,22 @@ export const data = [
     buttonColor: "#2F704E",
     items: [
       {
-        title: "11",
+        title: "Asia 0",
         rate: 4,
         image: "https://source.unsplash.com/random/468x600?space"
       },
       {
-        title: "22",
+        title: "Asia 1",
         rate: 4,
         image: "https://source.unsplash.com/random/4480×5600?14"
       },
       {
-        title: "33",
+        title: "Asia 2",
         rate: 4,
         image: "https://source.unsplash.com/random/468x600?15"
       },
       {
-        title: "44",
+        title: "Asia 3",
         rate: 4,
         image: "https://source.unsplash.com/random/468x600?16"
       }
@@ -120,22 +120,22 @@ export const data = [
     buttonColor: "#3F1D21",
     items: [
       {
-        title: "11",
+        title: "America 1",
         rate: 4,
         image: "https://source.unsplash.com/random/468x600?17"
       },
       {
-        title: "22",
+        title: "America 2",
         rate: 4,
         image: "https://source.unsplash.com/random/4480×5600?18"
       },
       {
-        title: "33",
+        title: "America 3",
         rate: 4,
         image: "https://source.unsplash.com/random/468x600?19"
       },
       {
-        title: "44",
+        title: "America 4",
         rate: 4,
         image: "https://source.unsplash.com/random/468x600?20"
       }
@@ -149,22 +149,22 @@ export const data = [
 
     items: [
       {
-        title: "11",
+        title: "Arctic 1",
         rate: 4,
         image: "https://source.unsplash.com/random/468x600?21"
       },
       {
-        title: "22",
+        title: "Arctic 2",
         rate: 4,
         image: "https://source.unsplash.com/random/4480×5600?22"
       },
       {
-        title: "33",
+        title: "Arctic 3",
         rate: 4,
         image: "https://source.unsplash.com/random/468x600?23"
       },
       {
-        title: "44",
+        title: "Arctic 4",
         rate: 4,
         image: "https://source.unsplash.com/random/468x600?24"
       }
