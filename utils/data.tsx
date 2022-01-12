@@ -4,6 +4,8 @@ export const data = [
   {
     title: "Australia",
     description: `1 ${description}`,
+    image: "https://source.unsplash.com/random/1920x1080",
+
     items: [
       {
         title: "1",
@@ -30,6 +32,8 @@ export const data = [
   {
     title: "Europe",
     description: `2 ${description}`,
+    image: "https://source.unsplash.com/random/1920x1080?space",
+
     items: [
       {
         title: "11",
@@ -56,6 +60,8 @@ export const data = [
   {
     title: "Africa",
     description: `3 ${description}`,
+    image: "https://source.unsplash.com/random/1920x1080?b",
+
     items: [
       {
         title: "11",
@@ -82,6 +88,8 @@ export const data = [
   {
     title: "Asia",
     description: `4 ${description}`,
+    image: "https://source.unsplash.com/random/1920x1080?a",
+
     items: [
       {
         title: "11",
@@ -108,6 +116,8 @@ export const data = [
   {
     title: "America",
     description: `5 ${description}`,
+    image: "https://source.unsplash.com/random/1920x1080?coffe",
+
     items: [
       {
         title: "11",
@@ -134,6 +144,8 @@ export const data = [
   {
     title: "Arctic",
     description: `6 ${description}`,
+    image: "https://source.unsplash.com/random/1920x1080?c",
+
     items: [
       {
         title: "11",

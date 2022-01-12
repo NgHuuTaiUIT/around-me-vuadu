@@ -4,13 +4,14 @@ import { useTransition, animated } from "react-spring";
 
 const Heading = ({
   active,
-  children
-}: React.PropsWithChildren<{ active?: boolean }>) => {
+  children,
+  duration = "450ms"
+}: React.PropsWithChildren<{ active?: boolean; duration?: string }>) => {
   const commonStyles = {
     fontWeight: "bold",
     fontSize: active ? "150px" : "90px",
     letterSpacing: "-1px",
-    transition: "font-size 800ms,opacity 800ms",
+    transition: `font-size ${duration} ease-out,opacity ${duration} ease-out`,
     color: "white"
   };
 
@@ -43,6 +44,51 @@ const Heading = ({
     </Box>
   );
 };
+
+const Description = (props: {
+  item: { title: string; description?: string; buttonColor?: string };
+  key: string;
+  width: string;
+  onExplore?: () => void;
+}) => {
+  const { item, key, width, onExplore } = props;
+  const fadingTextPropsTransition = useTransition(item, {
+    key,
+    from: { opacity: -1 },
+    enter: { opacity: 1 },
+    leave: { opacity: -2 },
+    delay: 100,
+    config: { tension: 220, friction: 120, duration: 600 }
+    // exitBeforeEnter: true
+  });
+  return (
+    <>
+      {fadingTextPropsTransition((styles, item) => (
+        <animated.div
+          style={{
+            ...styles,
+            width,
+            position: "absolute"
+          }}>
+          <Text>{item.description}</Text>
+          <Button
+            sx={{
+              backgroundColor: item?.buttonColor,
+              color: "white",
+              px: 30,
+              py: 10,
+              fontWeight: "bold"
+            }}>
+            Explore
+            <Text as="span" sx={{ ml: 80 }}>
+              🠒
+            </Text>
+          </Button>
+        </animated.div>
+      ))}
+    </>
+  );
+};
 interface HeadingsProps {
   data: {
     title: string;
@@ -56,48 +102,30 @@ interface HeadingsProps {
 }
 
 export function Headings(props: HeadingsProps) {
-  const { data, currentIdx, height = "80vh", width = "50vw" } = props;
-  const fadingTextPropsTransition = useTransition(data[currentIdx], {
-    from: { opacity: -1 },
-    enter: { opacity: 1 },
-    leave: { opacity: -2 },
-    delay: 300,
-    config: { tension: 220, friction: 120, duration: 600 }
-    // exitBeforeEnter: true
-  });
+  const {
+    data,
+    currentIdx,
+    height = "80vh",
+    width = "50vw",
+    onExplore
+  } = props;
+
   return (
     <Box sx={{ height, width, position: "relative" }}>
       <Text
         sx={{
           position: "absolute",
-          top: `calc(${height} / 2 + 60px)`,
+          top: `calc(${height} / 2 + 40px)`,
           color: "white",
           fontSize: 16,
           lineHeight: 2,
           width
         }}>
-        {fadingTextPropsTransition((styles, item) => (
-          <animated.div
-            style={{
-              ...styles,
-              width,
-              position: "absolute"
-            }}>
-            <Text>{item.description}</Text>
-            <Button
-              sx={{
-                backgroundColor: item?.buttonColor,
-                color: "white",
-                px: 30,
-                py: 10
-              }}>
-              Explore
-              <Text as="span" sx={{ ml: 80 }}>
-                🠒
-              </Text>
-            </Button>
-          </animated.div>
-        ))}
+        <Description
+          item={data[currentIdx]}
+          key={data[currentIdx].title}
+          width={width}
+        />
       </Text>
 
       {data.map((item, idx) => (
@@ -105,7 +133,7 @@ export function Headings(props: HeadingsProps) {
           key={idx}
           sx={{
             position: "absolute",
-            transition: "all 800ms",
+            transition: "bottom 450ms ease,opacity 150ms ease",
             ...(currentIdx === idx
               ? { bottom: `calc(${height}/2)` }
               : currentIdx < idx
@@ -113,7 +141,7 @@ export function Headings(props: HeadingsProps) {
               : { bottom: `calc(${height} - 106px)` }),
             opacity: Math.abs(currentIdx - idx) < 2 ? 1 : 0
           }}>
-          <Heading key={idx} active={idx === currentIdx}>
+          <Heading key={idx} active={idx === currentIdx} duration="450ms">
             {item.title}
           </Heading>
         </Box>

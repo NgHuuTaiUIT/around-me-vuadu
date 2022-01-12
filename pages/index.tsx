@@ -5,9 +5,10 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
-import { Flex } from "rebass";
+import { Box, Flex } from "rebass";
 import styles from "../styles/Home.module.css";
 import { CardList } from "../components/card-list";
+import { SlideShow } from "../components/slideshow";
 
 const Home: NextPage = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -19,6 +20,9 @@ const Home: NextPage = () => {
         bg: "#333",
         minHeight: "100vh"
       }}>
+      <Box sx={{ position: "absolute", inset: 0 }}>
+        <SlideShow slides={data} currentIdx={currentIdx} />
+      </Box>
       <Flex sx={{ justifyContent: "space-between", ml: 40 }}>
         <Indicators
           total={data.length}

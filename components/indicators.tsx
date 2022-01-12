@@ -3,7 +3,7 @@ import { Box, Flex, Text } from "rebass";
 
 const WIDTH = "62px";
 
-const Dot = (props: { active?: boolean; size: string }) => {
+const Dot = (props: { active?: boolean; size: string; duration?: string }) => {
   return (
     <Flex
       sx={{
@@ -28,7 +28,7 @@ const Dot = (props: { active?: boolean; size: string }) => {
           height: props.active ? "100%" : 8,
           backgroundColor: "white",
           borderRadius: 100,
-          transition: "1s",
+          transition: `${props.duration} ease`,
           boxShadow: "0px Opx 4px 2px rgba(0,0,0,0.1)"
         }}></Flex>
     </Flex>
@@ -62,6 +62,7 @@ interface IndicatorsProps {
   width?: string;
   height?: string;
   maxDisplayDots?: number;
+  duration?: string;
 }
 
 export const Indicators = (props: IndicatorsProps) => {
@@ -69,7 +70,8 @@ export const Indicators = (props: IndicatorsProps) => {
     height = "80vh",
     width = "62px",
     maxDisplayDots = 6,
-    onSelect
+    onSelect,
+    duration = "350ms"
   } = props;
   const [hoveringIdx, setHoveringIdx] = useState<number | null>(null);
 
@@ -98,10 +100,11 @@ export const Indicators = (props: IndicatorsProps) => {
                 top: `calc(${height}/2 + ${height}/${maxDisplayDots + 2} *${
                   idx - props.currentIdx
                 })`,
-                transition: "top 400ms"
+                transition: `top ${duration} ease`
               }}>
               <Dot
                 active={idx === props.currentIdx || idx === hoveringIdx}
+                duration={duration}
                 size={width}
               />
             </Box>
@@ -137,7 +140,7 @@ export const Indicators = (props: IndicatorsProps) => {
                 fontSize: "16px",
                 fontWeight: "bold",
                 cursor: "pointer",
-                transition: "top 400ms"
+                transition: `top ${duration} ease`
               }}
               onMouseEnter={() => setHoveringIdx(idx)}
               onMouseLeave={() => setHoveringIdx(null)}
@@ -151,7 +154,7 @@ export const Indicators = (props: IndicatorsProps) => {
                       ? 16
                       : "0px",
                   fontWeight: "bold",
-                  transition: "font-size 400ms",
+                  transition: `font-size ${duration} ease`,
                   color: "rgba(255,255,255,1)"
                 }}>
                 {idx + 1}
