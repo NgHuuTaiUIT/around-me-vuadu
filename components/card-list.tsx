@@ -1,4 +1,4 @@
-import { useDelayedState } from "@/hooks/useDelayState";
+import { useDelayedState } from "../hooks/useDelayState";
 import React, { ReactElement, useEffect, useState } from "react";
 import { animated, useTransition } from "react-spring";
 import { Box, Flex, Image, Text } from "rebass";
