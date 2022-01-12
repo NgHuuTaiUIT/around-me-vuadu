@@ -1,3 +1,4 @@
+import { useDelayedState } from "@/hooks/useDelayState";
 import React, { ReactElement, useEffect, useState } from "react";
 import { animated, useTransition } from "react-spring";
 import { Box, Flex, Image, Text } from "rebass";
@@ -66,6 +67,7 @@ const Card = ({
   duration?: number;
   key: string;
 }) => {
+  // const [delayedImage] = useDelayedState(image,delay);
   duration = duration - delay >= 150 ? duration - delay : 150;
   const cardTransitions = useTransition(image, {
     key,
