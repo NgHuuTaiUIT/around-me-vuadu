@@ -12,7 +12,6 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
-    "@types/rebass": "^4.0.10",
     "gl-react": "^5.0.0",
     "gl-react-dom": "^5.1.0",
     "gl-react-image": "^3.2.0",
@@ -34,6 +33,7 @@
     "@types/gl-react": "^3.15.4",
     "@types/gl-react-dom": "^3.15.4",
     "@types/node": "17.0.8",
+    "@types/rebass": "^4.0.10",
     "@types/react": "17.0.38",
     "babel-loader": "^8.2.3",
     "eslint": "8.6.0",

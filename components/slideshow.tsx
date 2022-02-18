@@ -6,6 +6,7 @@ import GLTransitions from "gl-transitions";
 import GLImage from "gl-react-image";
 
 import { useWindowSize } from "../hooks/useWindowSize";
+import { useDelayedState } from "../hooks/useDelayState";
 
 function usePrevious<T>(value: T) {
   const [temp, setTemp] = useState<T | null>(null);
@@ -72,12 +73,15 @@ interface SlideShowProps {
   slides: { image: string }[];
   duration?: number;
   currentIdx: number;
+  delay?: number;
 }
 export const SlideShow = (props: SlideShowProps) => {
-  const { slides, currentIdx, duration = 1500 } = props;
-
+  const { slides, currentIdx, duration = 2500, delay = 200 } = props;
+  const [delayedCurrentIdx] = useDelayedState(currentIdx, delay);
   const previousIdx = usePrevious(currentIdx);
-  const [currentIdxSlide, setCurrentIdxSlide] = useState(currentIdx);
+  const [currentIdxSlide, setCurrentIdxSlide] = useState(
+    delayedCurrentIdx ?? currentIdx
+  );
   const from = slides[previousIdx ?? currentIdxSlide].image;
   const to = slides[currentIdxSlide].image;
   const transition = GLTransitions[10];
@@ -86,7 +90,11 @@ export const SlideShow = (props: SlideShowProps) => {
   const size = useWindowSize();
 
   useEffect(() => {
-    if (progress >= 1 && currentIdx !== currentIdxSlide) {
+    if (
+      progress >= 1 &&
+      currentIdx !== currentIdxSlide &&
+      delayedCurrentIdx !== null
+    ) {
       setProgress(0);
       setCurrentIdxSlide(currentIdx);
     }
@@ -103,10 +111,10 @@ export const SlideShow = (props: SlideShowProps) => {
 
   return (
     <Surface width={size.width} height={size.height}>
-      {progress > 0 ? (
+      {progress > 0 && from !== null ? (
         <GLTransition
           from={<GLImage source={from} />}
-          to={<GLImage source={from} />}
+          to={<GLImage source={to} />}
           progress={progress}
           transition={newTransitions}
         />

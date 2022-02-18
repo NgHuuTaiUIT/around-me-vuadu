@@ -10,6 +10,20 @@ import styles from "../styles/Home.module.css";
 import { CardList } from "../components/card-list";
 import { SlideShow } from "../components/slideshow";
 import { useWindowSize } from "../hooks/useWindowSize";
+import { getPlaiceholder } from "plaiceholder";
+
+export const getStaticProps = async () => {
+  const { base64, img } = await getPlaiceholder("/path-to-your-image.jpg");
+
+  return {
+    props: {
+      imageProps: {
+        ...img,
+        blurDataURL: base64
+      }
+    }
+  };
+};
 
 const Home: NextPage = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -25,7 +39,7 @@ const Home: NextPage = () => {
         width: `${size.width}px`,
         height: `${size.height}px`
       }}>
-      <Flex sx={{ height: "18.5vh" }}></Flex>
+      <Flex sx={{ height: "10vh" }}></Flex>
       <Box sx={{ position: "absolute", inset: 0 }}>
         <SlideShow slides={data} currentIdx={currentIdx} />
       </Box>
