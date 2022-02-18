@@ -56,16 +56,17 @@ interface HeadingsProps {
 }
 
 export function Headings(props: HeadingsProps) {
-  const { data, currentIdx, height = "80vh", width = "50wh" } = props;
+  const { data, currentIdx, height = "80vh", width = "50vw" } = props;
   const fadingTextPropsTransition = useTransition(data[currentIdx], {
-    from: { opacity: 0 },
+    from: { opacity: -1 },
     enter: { opacity: 1 },
-    leave: { opacity: 0 },
+    leave: { opacity: -2 },
     delay: 300,
-    config: { tension: 220, friction: 120, duration: 800 }
+    config: { tension: 220, friction: 120, duration: 600 }
+    // exitBeforeEnter: true
   });
   return (
-    <Box sx={{ height, position: "relative" }}>
+    <Box sx={{ height, width, position: "relative" }}>
       <Text
         sx={{
           position: "absolute",
@@ -79,7 +80,7 @@ export function Headings(props: HeadingsProps) {
           <animated.div
             style={{
               ...styles,
-              width: "50vw",
+              width,
               position: "absolute"
             }}>
             <Text>{item.description}</Text>
@@ -109,7 +110,7 @@ export function Headings(props: HeadingsProps) {
               ? { bottom: `calc(${height}/2)` }
               : currentIdx < idx
               ? { bottom: 0 }
-              : { top: 0 }),
+              : { bottom: `calc(${height} - 106px)` }),
             opacity: Math.abs(currentIdx - idx) < 2 ? 1 : 0
           }}>
           <Heading key={idx} active={idx === currentIdx}>

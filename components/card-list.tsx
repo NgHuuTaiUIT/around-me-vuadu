@@ -11,7 +11,7 @@ const Control = (props: { onNext?: () => void; onPrev?: () => void }) => {
     height: 80,
     borderRadius: 80,
     backgroundColor: "rgba(255, 255, 255, 0.3)",
-    cursor: "ponter"
+    cursor: "pointer"
   };
   return (
     <Flex sx={{ color: "white", fontSize: 32, gap: 18 }}>
@@ -59,7 +59,6 @@ const Card = ({ image, height }: { image: string; height?: string }) => {
   return (
     <Flex
       sx={{
-        p: "10px",
         borderRadius: "16px",
         justifyContent: "flex-start",
         alignItems: "flex-start",
@@ -86,7 +85,7 @@ const Card = ({ image, height }: { image: string; height?: string }) => {
             style={{
               ...style,
               position: "absolute",
-              paddingTop: "100%",
+              paddingTop: "142%",
               overflow: "hidden",
               transition: "width 600ms",
               backfaceVisibility: "hidden",
@@ -134,7 +133,7 @@ export function CardList(props: CardListProps) {
   }, [props.data]);
 
   return (
-    <Box sx={{ overflow: "hidden", width }}>
+    <Box sx={{ overflow: "hidden", width, position: "relative" }}>
       <Flex
         sx={{
           position: "absolute",
